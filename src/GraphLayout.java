@@ -55,7 +55,6 @@ public class GraphLayout {
         drawEdges();
         drawNodes();
         labelNodes();
-        StdDraw.save("BinaryTree.png");
     }
 
     /**
