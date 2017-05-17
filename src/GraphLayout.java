@@ -1,4 +1,4 @@
-/**b/
+/**
  * Graph is a program that draws a directed graph
  * after all the preprocessing that been done
  * i.e ranking, node ordering
