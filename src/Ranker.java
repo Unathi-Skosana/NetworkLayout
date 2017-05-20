@@ -273,6 +273,14 @@ public class Ranker {
                 , virtualNodes);
     }
 
+    /**
+     * Takes in values of the tail and head of
+     * an edge and formats it as String.
+     *
+     * @return returns the edges formatted as
+     *         a String.
+     */
+
     private String constructEdge(int tail, int head) {
         return tail + " -> " + head;
     }
@@ -282,7 +290,7 @@ public class Ranker {
      * @return returns Digraph after being ranked.
      */
     public Digraph  getRankedDigraph() {
-      return newG;
+        return newG;
     }
     /**
      * Getter method

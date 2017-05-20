@@ -86,8 +86,8 @@ public class GraphLayout {
     * now processed Digraph
     */
     private void pollNewDigraph() {
-      this.ranker = layout.getUntangledRanker();
-      this.ranks  = ranker.getRankSets();
+        this.ranker = layout.getUntangledRanker();
+        this.ranks  = ranker.getRankSets();
     }
 
     /**
@@ -95,8 +95,8 @@ public class GraphLayout {
      * drawing.
      */
     private void StdDrawConfig() {
-      this.scale  = getMaxScale();
-      this.radius = setRadius();
+        this.scale  = getMaxScale();
+        this.radius = setRadius();
     }
 
     /**
@@ -137,14 +137,14 @@ public class GraphLayout {
      * @return returns the width.
      */
     private int getDigraphWidth() {
-       int max = 0;
-       Set<Integer> keys = ranks.keySet();
-       for (int key: keys) {
+        int max = 0;
+        Set<Integer> keys = ranks.keySet();
+        for (int key: keys) {
             if(ranks.get(key).size() > max) {
                 max = ranks.get(key).size();
             }
-       }
-       return max;
+        }
+        return max;
     }
 
     /**
@@ -172,13 +172,13 @@ public class GraphLayout {
      * Sets the scales of the StdDraw window.
      */
     private void setScales() {
-      StdDraw.setXscale(-1, scale + 1);
-      StdDraw.setYscale(-1, scale + 1);
-      if (vertices >=  100) {
-          StdDraw.setCanvasSize(4000, 1000);
-      } else {
-          StdDraw.setCanvasSize(500, 500);
-      }
+        StdDraw.setXscale(-1, scale + 1);
+        StdDraw.setYscale(-1, scale + 1);
+        if (vertices >=  100) {
+            StdDraw.setCanvasSize(4000, 1000);
+        } else {
+            StdDraw.setCanvasSize(500, 500);
+        }
     }
 
     /**
@@ -208,10 +208,10 @@ public class GraphLayout {
      * Draws nodes of the graph.
      */
     private void drawNodes() {
-       for (int i = 0; i < vertices; i++) {
+        for (int i = 0; i < vertices; i++) {
             drawNode(nodes[i].getXCoordinate(),
                nodes[i].getYCoordinate(), radius);
-       }
+        }
     }
 
     /**

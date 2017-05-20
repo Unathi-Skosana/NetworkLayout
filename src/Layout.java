@@ -95,12 +95,12 @@ public class Layout {
      *         otherwise returns @false.
      */
     public boolean isAdjTo(int tail, int head) {
-       for (int w: G.adj(tail)) {
-          if (head == w) {
-            return true;
-          }
-       }
-       return false;
+        for (int w: G.adj(tail)) {
+            if (head == w) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

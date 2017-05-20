@@ -106,7 +106,7 @@ public class InputParser {
      *         an arrayList.
      */
     public ArrayList<String> getEdges() {
-       return edges;
+        return edges;
     }
 
 }

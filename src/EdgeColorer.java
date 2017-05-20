@@ -1,3 +1,14 @@
+/**
+ * EdgeColorer takes in a list of edges as
+ * input and assigns the colors to edge
+ * according to their frequency.
+ *
+ * Red - Most Frequent
+ * Orange - Second Most Frequent
+ * Yellow - Third Most Frequent
+ * Black - The rest.
+ */
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Set;
