@@ -46,35 +46,15 @@ JUnit
 
 The following input produces the graph below.
 
-    0 -> 9
-    1 -> 0
-    2 -> 0
-    3 -> 5
-    4 -> 9
-    5 -> 4
-    6 -> 8
-    7 -> 5
-    8 -> 4
-    0 -> 9
-    1 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    2 -> 0
-    3 -> 5
-    4 -> 9
-    5 -> 4
-    6 -> 8
-    7 -> 5
-    8 -> 4
-    8 -> 4
-    8 -> 4
-    8 -> 4
+    0 -> 4
+    1 -> 6
+    2 -> 9
+    3 -> 6
+    4 -> 7
+    5 -> 9
+    5 -> 0
+    6 -> 4
+    8 -> 5
+    9 -> 0
 
-![Alt text](BinaryTree.png?raw=true "One specific test case")
+![Alt text](rooted-in.png?raw=true "One specific test case")
