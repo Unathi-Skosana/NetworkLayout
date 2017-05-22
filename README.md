@@ -31,7 +31,7 @@ This will generate a digraph that has the structure of a binary tree with 10 ver
 - rooted-out tree
 - tournament 
 
-Note: Some options may generated acylic digraphs.
+Note: Some options may generate cylic digraphs.
 
 ### Output
 
