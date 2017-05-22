@@ -58,3 +58,5 @@ The following input produces the graph below.
     9 -> 0
 
 ![Alt text](rooted-in.png?raw=true "One specific test case")
+
+Meanful suggestions would be appreciated, better yet pull in a request if you can improve the program.
