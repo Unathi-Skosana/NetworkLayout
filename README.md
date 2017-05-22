@@ -2,13 +2,36 @@
 
 ### Execution
 
-``javac GraphLayout.java``
+javac GraphLayout.java
 
-``java GraphLayout inputfile``
+java GraphLayout inputfile
 
 ### Command line arguments
 
 The command line argument is the name of the file containing the input for the graph to be drawn. This holds the assumption that file name specified is a valid file and it contains valid input. Specifically the input is specified in the format "v -> w".
+
+
+### Input generation
+
+javac DigraphGenerator.java 
+
+java DigraphGenerator V E type
+
+e.g java DigraphGenerator 10 10 binaryTree
+
+This will generate a digraph that has the structure of a binary tree with 10 vertices and 10 edges, input file will named binaryTree.txt and dumped into examples/generated_input/
+
+### Input generation options
+
+- binaryTree
+- DAG
+- rooted-in DAG
+- rooted-out DAG
+- rooted-in tree
+- rooted-out tree
+- tournament 
+
+Note: Some options may generated acylic digraphs.
 
 ### Output
 
