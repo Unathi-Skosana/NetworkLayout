@@ -1,7 +1,6 @@
 /** 
  * For formatting output from a toString() method
  * of digraph into a usable format.
- *
  */
 public class Formatter {
     private String[] input;
@@ -15,7 +14,6 @@ public class Formatter {
     public Formatter(Digraph G, String name) {
         this.input = G.toString().split("\n");
         this.output = new Out("../examples/generated_input/" + name + ".txt");
-        StdOut.println(G);
         format();
     }
 
