@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac DigraphGenerator.java
  *  Execution:    java DigraphGenerator V E Type
@@ -6,6 +7,9 @@
  *  A digraph generator.
  *  
  ******************************************************************************/
+
+import datastructures.*;
+import std.StdRandom;
 
 /**
  *  The {@code DigraphGenerator} class provides static methods for creating

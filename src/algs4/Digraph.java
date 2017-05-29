@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac Digraph.java
  *  Execution:    java Digraph filename.txt
@@ -27,7 +28,11 @@
  *  
  ******************************************************************************/
 
+import datastructures.Bag;
+import datastructures.Stack;
 import java.util.NoSuchElementException;
+import std.In;
+import std.StdOut;
 
 /**
  *  The {@code Digraph} class represents a directed graph of vertices
@@ -49,7 +54,6 @@ import java.util.NoSuchElementException;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-
 public class Digraph {
     private static final String NEWLINE = System.getProperty("line.separator");
 

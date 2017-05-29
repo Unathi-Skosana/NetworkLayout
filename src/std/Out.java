@@ -1,3 +1,4 @@
+package std;
 /******************************************************************************
  *  Compilation:  javac Out.java
  *  Execution:    java Out

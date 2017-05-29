@@ -1,7 +1,11 @@
-/** 
+package algs4;
+/**
  * For formatting output from a toString() method
  * of digraph into a usable format.
  */
+
+import std.Out;
+
 public class Formatter {
     private String[] input;
     private Out output;

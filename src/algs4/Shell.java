@@ -1,3 +1,4 @@
+package algs4;
 /**
  *  The {@code Shell} class provides static methods for sorting an
  *  array using Shellsort with Knuth's increment sequence (1, 4, 13, 40, ...).

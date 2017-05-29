@@ -8,6 +8,8 @@
  * @since 2017-02-05
  */
 
+import algs4.AcyclicLP;
+import algs4.Digraph;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -194,7 +196,6 @@ public class Ranker {
      * Percolates a node in between nodes that have edges that stretch over
      * more than one rank.
      *
-     * @param node node to percolate
      * @param from starting rank
      * @param to   destination rank
      */

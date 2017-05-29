@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac DirectedCycle.java
  *  Execution:    java DirectedCycle input.txt
@@ -15,6 +16,10 @@
  *  No directed cycle
  *
  ******************************************************************************/
+
+import datastructures.Stack;
+import std.In;
+import std.StdOut;
 
 /**
  *  The {@code DirectedCycle} class represents a data type for 

@@ -7,10 +7,18 @@
  * @version 1.0
  * @since 2017-02-05
  */
+
+/* Default java imports */
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+
+/* User defined imports */
+import algs4.Digraph;
+import std.StdDraw;
+import std.Out;
+import std.In;
 
 public class GraphLayout {
     private EuclideanPoint[] nodes;
@@ -36,7 +44,7 @@ public class GraphLayout {
     /**
      * Constructor, does all the necessary processing
      * behind the scenes.
-     * @param graphInput
+     * @param input
      */
 
     public GraphLayout(InputParser input) {
@@ -245,7 +253,7 @@ public class GraphLayout {
                 p1.getYCoordinate(),
                 p2.getXCoordinate(),
                 p2.getYCoordinate());
-        StdDraw.setPenColor(GraphConfig.BLACK);
+        setPenColor("");
     }
 
     /**

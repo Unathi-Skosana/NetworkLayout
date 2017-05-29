@@ -9,11 +9,17 @@
  * @version 1.0
  * @since   2017-27-02
  */
+
+/* Default java imports */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Collections;
+
+/* User defined imports */
+import algs4.Digraph;
+import algs4.Shell;
 
 public class Layout {
     private Digraph G;

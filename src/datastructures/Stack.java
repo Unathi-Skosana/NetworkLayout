@@ -1,3 +1,4 @@
+package datastructures;
 /******************************************************************************
  *  Compilation:  javac Stack.java
  *  Execution:    java Stack < input.txt

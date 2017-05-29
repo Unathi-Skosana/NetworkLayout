@@ -6,8 +6,15 @@
  * @version 1.0
  * @since   2017-02-05
  */
+
+/* Default java imports */
 import java.util.ArrayList;
 import java.util.HashMap;
+
+/* User defined imports */
+import algs4.Digraph;
+import algs4.DirectedCycle;
+import std.In;
 
 public class InputParser {
     private Digraph G;
@@ -106,7 +113,7 @@ public class InputParser {
      * has been added before, otherwise it increments the
      * edge's count.
      *
-     * @param dirEdge edge to be added
+     * @param edge edge to be added
      */
     private void mapToFreqCount(String edge) {
         if (edgeFreqCount.containsKey(edge))  {

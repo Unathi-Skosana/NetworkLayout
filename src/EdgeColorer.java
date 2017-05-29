@@ -22,7 +22,7 @@ public class EdgeColorer {
     /**
      * Constructor, that processes everything beforehand and allows the user
      * to query about the color groups of the edges.
-     * @param edges
+     * @param edgeFreqCount
      * @param dummyNodes
      */
     public EdgeColorer(HashMap<String, Integer> edgeFreqCount, HashMap<String,

@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac DepthFirstOrder.java
  *  Execution:    java DepthFirstOrder digraph.txt
@@ -31,6 +32,9 @@
  *
  ******************************************************************************/
 
+import datastructures.Stack;
+import datastructures.Queue;
+import std.StdOut;
 /**
  *  The {@code DepthFirstOrder} class represents a data type for 
  *  determining depth-first search ordering of the vertices in a digraph

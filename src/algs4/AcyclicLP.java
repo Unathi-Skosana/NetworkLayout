@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac AcyclicLP.java
  *  Execution:    java AcyclicP V E
@@ -19,6 +20,8 @@
  *  5 to 7 (2.43)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->7  0.37
  *
  ******************************************************************************/
+
+import datastructures.Stack;
 
 /**
  *  The {@code AcyclicLP} class represents a data type for solving the

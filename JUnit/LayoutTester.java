@@ -1,5 +1,14 @@
+/* JUnit imports */
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+/* User defined imports */
+import algs4.Digraph;
+import algs4.DirectedCycle;
+import algs4.DirectedEdge;
+import std.In;
+import std.StdOut;
+import std.StdDraw;
 
 public class LayoutTester {
 
@@ -58,12 +67,12 @@ public class LayoutTester {
 	}
 
 	public void testNodeGraphs() throws Exception {
-		Layout.main(new String[] {"testcases/small_graphs/edges.txt"});
-		Layout.main(new String[] {"testcases/small_graphs/edges1.txt"});
-		Layout.main(new String[] {"testcases/small_graphs/edges2.txt"});
-		Layout.main(new String[] {"testcases/small_graphs/edges3.txt"});
-		Layout.main(new String[] {"testcases/small_graphs/binaryTree.txt"});
-		Layout.main(new String[] {"testcases/small_graphs/rooted-in tree.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/edges.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/edges1.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/edges2.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/edges3.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/binaryTree.txt"});
+		GraphLayout.main(new String[] {"testcases/small_graphs/rooted-in tree.txt"});
 	}
 
 	public void testDigraphs() {

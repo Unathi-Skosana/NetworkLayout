@@ -1,3 +1,4 @@
+package datastructures;
 /******************************************************************************
  *  Compilation:  javac SET.java
  *  Execution:    java SET
@@ -15,6 +16,7 @@
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import std.StdOut;
 import java.util.TreeSet;
 
 /**

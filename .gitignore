@@ -3,3 +3,6 @@
 
 # output file
 src/output.txt
+
+# IntelliJ
+/out/

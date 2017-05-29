@@ -1,3 +1,4 @@
+package algs4;
 /******************************************************************************
  *  Compilation:  javac DirectedEdge.java
  *  Execution:    java DirectedEdge
@@ -6,6 +7,9 @@
  *  Immutable weighted directed edge.
  *
  ******************************************************************************/
+
+import std.StdOut;
+
 /**
  *  The {@code DirectedEdge} class represents a weighted edge in an 
  *  {@link EdgeWeightedDigraph}. Each edge consists of two integers
@@ -19,7 +23,6 @@
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-
 public class DirectedEdge { 
     private final int v;
     private final int w;
