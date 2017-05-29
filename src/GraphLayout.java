@@ -17,7 +17,7 @@ public class GraphLayout {
     private Digraph G;
     private Ranker ranker;
     private HashMap<Integer, ArrayList<Integer>> ranks;
-    private ArrayList<String> edges;
+    private HashMap<String, Integer> edgeFreqCount;
     private EdgeColorer edgecolorer;
     private Layout layout;
     private double radius;
@@ -71,13 +71,13 @@ public class GraphLayout {
      * @param input InputParser graph input
      */
     private void pollOldDigraph(InputParser input) {
-        this.ranker      = new Ranker(input.getDigraph());
-        this.vertices    = input.getDigraph().V();
-        this.G           = ranker.getRankedDigraph();
-        this.edges       = input.getEdges();
-        this.nodes       = new EuclideanPoint[G.V()];
-        this.layout      = new Layout(ranker);
-        this.edgecolorer = new EdgeColorer(edges,
+        this.ranker        = new Ranker(input.getDigraph());
+        this.vertices      = input.getDigraph().V();
+        this.G             = ranker.getRankedDigraph();
+        this.edgeFreqCount = input.getEdgeFreqCount();
+        this.nodes         = new EuclideanPoint[G.V()];
+        this.layout        = new Layout(ranker);
+        this.edgecolorer   = new EdgeColorer(edgeFreqCount,
             ranker.getDummyNodes());
     }
 
@@ -240,6 +240,20 @@ public class GraphLayout {
      */
     private void drawEdge(EuclideanPoint p1,
                 EuclideanPoint p2, String color) {
+        setPenColor(color);
+        StdDraw.line(p1.getXCoordinate(),
+                p1.getYCoordinate(),
+                p2.getXCoordinate(),
+                p2.getYCoordinate());
+        StdDraw.setPenColor(GraphConfig.BLACK);
+    }
+
+    /**
+     * Changes the pen color to the color
+     * specified in it's argument
+     * @param color
+     */
+    private void setPenColor(String color) {
         switch (color) {
             case "red":
                 StdDraw.setPenColor(GraphConfig.RED);
@@ -254,11 +268,6 @@ public class GraphLayout {
                 StdDraw.setPenColor(GraphConfig.BLACK);
                 break;
         }
-        StdDraw.line(p1.getXCoordinate(),
-                p1.getYCoordinate(),
-                p2.getXCoordinate(),
-                p2.getYCoordinate());
-        StdDraw.setPenColor(GraphConfig.BLACK);
     }
 
     /**

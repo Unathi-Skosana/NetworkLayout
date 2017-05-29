@@ -16,7 +16,6 @@ import java.util.Collections;
 
 public class EdgeColorer {
     private HashMap<String, Integer> edgeFreqCount;
-    private ArrayList<String> edges;
     private HashMap<String, ArrayList<String>> dummyNodes;
     private ArrayList<Integer> occurenceSet;
 
@@ -26,28 +25,13 @@ public class EdgeColorer {
      * @param edges
      * @param dummyNodes
      */
-    public EdgeColorer(ArrayList<String> edges, HashMap<String,
+    public EdgeColorer(HashMap<String, Integer> edgeFreqCount, HashMap<String,
             ArrayList<String>> dummyNodes) {
-        this.edges  = edges;
+        this.edgeFreqCount  = edgeFreqCount;
         this.dummyNodes = dummyNodes; 
         this.occurenceSet =  new ArrayList<Integer>();
-        initialiseFreqCountMap();
         spreadFrequencies();
         pollOccurences();
-    }
-    
-    /**
-     * Initializes the frequency count hash map, and
-     * populates it with frequencies of the edges
-     * initially present in the graph, before the addition
-     * of dummy nodes. 
-     */
-    private void initialiseFreqCountMap() {
-        this.edgeFreqCount = new HashMap<String, Integer>();
-        for (int i = 0; i < edges.size(); i++) {
-            String edge = edges.get(i);
-            addToFreqCount(edge);
-        }
     }
     
     /**
@@ -56,14 +40,14 @@ public class EdgeColorer {
      *  initially split to facilitate the dummy nodes. 
      */
     private void spreadFrequencies() {
-        for (int i = 0; i < edges.size(); i++) {
-            String edge = edges.get(i);
-            if (dummyNodes.containsKey(edge)) {
+        String[] keys = edgeFreqCount.keySet().toArray(new String[0]);
+        for (String key: keys) {
+            if (dummyNodes.containsKey(key)) {
                 ArrayList<String> splineEdges =
-                    dummyNodes.get(edge);
+                    dummyNodes.get(key);
                 for (String splineEdge : splineEdges) {
                     edgeFreqCount.put(splineEdge,
-                            edgeFreqCount.get(edge));
+                            edgeFreqCount.get(key));
                 }
             }
         }
@@ -168,13 +152,5 @@ public class EdgeColorer {
                     return "black";
                 }
         }
-    }
-    
-    /**
-     * Getter method
-     * @return returns a mapping of edges mapped to their frequencies.
-     */
-    public HashMap<String, Integer> getFreqCount() {
-        return edgeFreqCount;
     }
 }
