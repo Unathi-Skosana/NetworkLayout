@@ -72,22 +72,6 @@ public class EdgeColorer {
     }
 
     /**
-     * Adds an edge to the frequency counter HashMap if it
-     * has been added before, otherwise it increments the
-     * edge's count.
-     *
-     * @param dirEdge edge to be added
-     */
-
-    private void addToFreqCount(String edge) {
-        if (edgeFreqCount.containsKey(edge))  {
-            edgeFreqCount.put(edge, edgeFreqCount.get(edge)+1);
-        } else {
-            edgeFreqCount.put(edge, 1);
-        }
-    }
-    
-    /**
      * Specifies in which color group does edge(edge must be in the graph) belong to
      * using the frequency counts and the occurrence set , and calling colorCode()
      * to get the group.
