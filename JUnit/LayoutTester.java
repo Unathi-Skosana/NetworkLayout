@@ -38,20 +38,20 @@ public class LayoutTester {
 	}
 
 	public void setUp() {
-		In edges_ONE = new In("testcases/small_graphs/edges.txt");
+		In edges_ONE = new In("examples/small_graphs/edges.txt");
 		this.input_ONE = new InputParser(edges_ONE);
 		this.G_ONE = input_ONE.getDigraph();
 		this.ranker_ONE  = new Ranker(G_ONE);
 		this.rankedG_ONE = ranker_ONE.getRankedDigraph();
 
-		In edges_TWO = new In("testcases/small_graphs/edges1.txt");
+		In edges_TWO = new In("examples/small_graphs/edges1.txt");
 		this.input_TWO = new InputParser(edges_TWO);
 		this.G_TWO = input_TWO.getDigraph();
 		this.ranker_TWO  = new Ranker(G_TWO);
 		this.rankedG_TWO = ranker_TWO.getRankedDigraph();
 
-		this.DG_ONE = new Digraph(new In ("testcases/small_graphs/tinyDG.txt"));
-		this.DG_TWO = new Digraph(new In("testcases/small_graphs/tinyDAG.txt"));
+		this.DG_ONE = new Digraph(new In ("examples/small_graphs/tinyDG.txt"));
+		this.DG_TWO = new Digraph(new In("examples/small_graphs/tinyDAG.txt"));
 	}
 
 	public void testRankers() {
@@ -67,12 +67,12 @@ public class LayoutTester {
 	}
 
 	public void testNodeGraphs() throws Exception {
-		GraphLayout.main(new String[] {"testcases/small_graphs/edges.txt"});
-		GraphLayout.main(new String[] {"testcases/small_graphs/edges1.txt"});
-		GraphLayout.main(new String[] {"testcases/small_graphs/edges2.txt"});
-		GraphLayout.main(new String[] {"testcases/small_graphs/edges3.txt"});
-		GraphLayout.main(new String[] {"testcases/small_graphs/binaryTree.txt"});
-		GraphLayout.main(new String[] {"testcases/small_graphs/rooted-in tree.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/edges.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/edges1.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/edges2.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/edges3.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/binaryTree.txt"});
+		GraphLayout.main(new String[] {"examples/small_graphs/rooted-in tree.txt"});
 	}
 
 	public void testDigraphs() {
@@ -135,30 +135,24 @@ public class LayoutTester {
 		assertEquals(G_ONE.toString(), expected_TWO);
 		assertEquals(rankedG_TWO.toString(), expected_THREE);
 		assertEquals(G_TWO.toString(), expected_FOUR);
-
-		// Boosting coverage
-		DG_ONE.reverse();
-		DG_TWO.reverse();
-		Digraph.main(new String[] {"testcases/small_graphs/tinyDG.txt"});
-		Digraph.main(new String[] {"testcases/small_graphs/tinyDAG.txt"});
 	}
 
 	public void testDependencies() {
 		StdOut.main(new String[] {});
 		StdDraw.main(new String[] {});
-		DirectedCycle.main(new String [] {"testcases/small_graphs/tinyDG.txt"});
-		DirectedCycle.main(new String[] {"testcases/small_graphs/tinyDAG.txt"});
+		DirectedCycle.main(new String [] {"examples/small_graphs/tinyDG.txt"});
+		DirectedCycle.main(new String[] {"examples/small_graphs/tinyDAG.txt"});
 		DirectedEdge.main(new String[] {});
 	}
 
 	public void testInvalidInput() {
 		try {
-		    InputParser invalidInput_ONE = new InputParser(new In("testcases/small_graphs/cycle.txt"));
+		    InputParser invalidInput_ONE = new InputParser(new In("examples/small_graphs/cycle.txt"));
 		} catch (InputException e) {
 		    assertEquals("Invalid input: Cycle detected in the graph input.", e.getMessage());
 		}
 		try {
-		    InputParser invalidInput_TWo = new InputParser(new In("testcases/small_graphs/loop.txt"));
+		    InputParser invalidInput_TWo = new InputParser(new In("examples/small_graphs/loop.txt"));
 		} catch (InputException e) {
 			assertEquals("Invalid input: Loop dectected in the graph input.", e.getMessage());
 		}

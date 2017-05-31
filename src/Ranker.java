@@ -8,11 +8,14 @@
  * @since 2017-02-05
  */
 
-import algs4.AcyclicLP;
-import algs4.Digraph;
+/* Default java imports */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+
+/* User defined imports */
+import algs4.AcyclicLP;
+import algs4.Digraph;
 
 public class Ranker {
     private ArrayList<Integer> minSet;

@@ -76,7 +76,8 @@ public class EdgeColorer {
      * using the frequency counts and the occurrence set , and calling colorCode()
      * to get the group.
      *   
-     * @param edge 
+     * @param tail the edge's tail
+     * @param head the edge's head
      * @return returns the color group of edge.
      */
     public String belongsTo(int tail, int head) {
