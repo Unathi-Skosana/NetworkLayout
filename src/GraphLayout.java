@@ -1,13 +1,3 @@
-/**
- * Graph is a program that draws a directed graph
- * after all the preprocessing that been done
- * i.e ranking, node ordering
- * 
- * @author Unathi Koketso Skosana
- * @version 1.0
- * @since 2017-02-05
- */
-
 /* Default java imports */
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,31 +10,45 @@ import std.StdDraw;
 import std.Out;
 import std.In;
 
+/**
+ * The {@code GraphLayout} class is the main program that draws the acyclic
+ * directed graph after all the preprocessing has been done.
+ * i.e ranking, node ordering.
+ * <p>
+ * @author Unathi Koketso Skosana
+ * @version 1.0
+ * @since 2017-02-05
+ */
+
 public class GraphLayout {
     private EuclideanPoint[] nodes;
     private Digraph G;
     private Ranker ranker;
     private HashMap<Integer, ArrayList<Integer>> ranks;
     private HashMap<String, Integer> edgeFreqCount;
-    private EdgeColorer edgecolorer;
+    private EdgeFreq edgeColors;
     private Layout layout;
     private double radius;
     private double scale;
     private int vertices;
     private Out output;
 
-
+    /**
+     * Main class
+     *
+     */
     public static void main(String[] args) {
-        InputParser parse = new InputParser(
-                new In(args[0]));
+        InputParser parse =
+                new InputParser(new In(args[0]));
         GraphLayout graph =  new GraphLayout(parse);
         graph.draw();
     }
 
     /**
-     * Constructor, does all the necessary processing
-     * behind the scenes.
-     * @param input
+     * Initialises an instance, and prepares the graph
+     * for drawing.
+     *
+     * @param input InputParser object
      */
 
     public GraphLayout(InputParser input) {
@@ -56,8 +60,10 @@ public class GraphLayout {
     }
 
     /**
-     * Draw the node graph
+     * Draws graph
+     *
      */
+
     public void draw() {
         setScales();
         drawEdges();
@@ -66,18 +72,22 @@ public class GraphLayout {
     }
 
     /**
-     * Initializes the outfile.
+     * Initializes the output file.
+     *
      */
+
     private void prepareOut() {
         output = new Out("output.txt");
     }
 
     /**
-     * Polls information relating the Digraph
-     * before the Digraph is processed.
+     * Polls information relating to the directed
+     * graph before the directed graph is processed.
+     * i.e processes - Node ordering, ranking.
      *
-     * @param input InputParser graph input
+     * @param input InputParser object
      */
+
     private void pollOldDigraph(InputParser input) {
         this.ranker        = new Ranker(input.getDigraph());
         this.vertices      = input.getDigraph().V();
@@ -85,14 +95,17 @@ public class GraphLayout {
         this.edgeFreqCount = input.getEdgeFreqCount();
         this.nodes         = new EuclideanPoint[G.V()];
         this.layout        = new Layout(ranker);
-        this.edgecolorer   = new EdgeColorer(edgeFreqCount,
-            ranker.getDummyNodes());
+        this.edgeColors   = new EdgeFreq(edgeFreqCount,
+            ranker.getDummyEdges());
     }
 
    /**
     * Polls information relating to the
-    * now processed Digraph
+    * now processed directed graph
+    *
+    * i.e processes - Node ordering, ranking.
     */
+
     private void pollNewDigraph() {
         this.ranker = layout.getUntangledRanker();
         this.ranks  = ranker.getRankSets();
@@ -101,7 +114,9 @@ public class GraphLayout {
     /**
      * Configures StdDraw in preparation for
      * drawing.
+     *
      */
+
     private void StdDrawConfig() {
         this.scale  = getMaxScale();
         this.radius = setRadius();
@@ -110,10 +125,11 @@ public class GraphLayout {
     /**
      * Labels a node with it's number.
      *
-     * @param x coordinate
-     * @param y coordinate
+     * @param x x coordinate
+     * @param y y coordinate
      * @param text number of the node.
      */
+
     private void labelNode(double x, double y, String text) {
         StdDraw.setPenRadius(GraphConfig.EDGE_PEN_SIZE);
         StdDraw.setPenColor(GraphConfig.WHITE);
@@ -127,8 +143,9 @@ public class GraphLayout {
     /**
      * Dynamic radius
      *
-     * @return returns the global radius of the nodes
+     * @return global radius of the nodes
      */
+
     private double setRadius() {
         if (vertices >= 100) {
             return scale/500.00;
@@ -142,8 +159,9 @@ public class GraphLayout {
      * Gets the width of the graph by finding the size
      * of the largest rank.
      *
-     * @return returns the width.
+     * @return width of largest node rank.
      */
+
     private int getDigraphWidth() {
         int max = 0;
         Set<Integer> keys = ranks.keySet();
@@ -159,18 +177,21 @@ public class GraphLayout {
      * Gets the height of the graph, which is the
      * number of ranks the graph has.
      *
-     * @return returns the number of ranks
+     * @return number of ranks
      */
+
     private int getDigraphHeight() {
         return ranks.size();
     }
+
     /**
      * Gets the scale of StdDraw window, by computing
      * the average of the width and height of the
      * graph.
      *
-     * @return
+     * @return average of width and height of the graph
      */
+
     private double getMaxScale() {
         return (getDigraphWidth()
             + getDigraphHeight())/2.00;
@@ -178,7 +199,9 @@ public class GraphLayout {
 
     /**
      * Sets the scales of the StdDraw window.
+     *
      */
+
     private void setScales() {
         StdDraw.setXscale(-1, scale + 1);
         StdDraw.setYscale(-1, scale + 1);
@@ -191,8 +214,11 @@ public class GraphLayout {
 
     /**
      * Process nodes rank by rank, and centering
-     * the nodes in each rank.
+     * the nodes in each rank using the barycentric
+     * method.
+     *
      */
+
     private void processNodesByRank() {
         HashMap<Integer, ArrayList<Integer>> ranks
             = ranker.getRankSets();
@@ -202,9 +228,9 @@ public class GraphLayout {
             ArrayList<Integer> vertexSet = ranks.get(key); 
             double centerX = scale/(vertexSet.size() + 1);
             for (int v = 0; v < vertexSet.size(); v++) {
-                nodes[vertexSet.get(v)] = new EuclideanPoint(
-                        (v+1)*centerX,
-                        key*centerY);
+                nodes[vertexSet.get(v)] =
+                        new EuclideanPoint((v+1)*centerX,
+                                key*centerY);
                 writeToFile(vertexSet.get(v),
                         nodes[vertexSet.get(v)].getXCoordinate(),
                         nodes[vertexSet.get(v)].getYCoordinate());
@@ -214,11 +240,13 @@ public class GraphLayout {
 
     /**
      * Draws nodes of the graph.
+     *
      */
+
     private void drawNodes() {
         for (int i = 0; i < vertices; i++) {
             drawNode(nodes[i].getXCoordinate(),
-               nodes[i].getYCoordinate(), radius);
+                    nodes[i].getYCoordinate(), radius);
         }
     }
 
@@ -229,12 +257,13 @@ public class GraphLayout {
      * @param y coordinate
      * @param scaleRadius radius
      */
+
     private void drawNode(double x,
             double y, double scaleRadius) {
         if (vertices >= 100) {
             StdDraw.filledEllipse(x, y,
                 scaleRadius, scaleRadius*4);
-        }  else {
+        }   else {
             StdDraw.filledCircle(x, y,
                 scaleRadius);
         }
@@ -242,10 +271,12 @@ public class GraphLayout {
 
     /**
      * Draws an colored edge from point p1 to point p2
+     *
      * @param p1 coordinates of tail
      * @param p2 coordinates of head
      * @param color color of edge.
      */
+
     private void drawEdge(EuclideanPoint p1,
                 EuclideanPoint p2, String color) {
         setPenColor(color);
@@ -259,8 +290,10 @@ public class GraphLayout {
     /**
      * Changes the pen color to the color
      * specified in it's argument
-     * @param color
+     *
+     * @param color color to be set
      */
+
     private void setPenColor(String color) {
         switch (color) {
             case "red":
@@ -280,7 +313,9 @@ public class GraphLayout {
 
     /**
      * Draws colored edges.
+     *
      */
+
     private void drawEdges() {
         ArrayList<String[]> edges = ranker.getVertices();
         for (int i = 0; i < G.E(); i++) {
@@ -288,14 +323,16 @@ public class GraphLayout {
             int tail = Integer.parseInt(vertex[0]);
             int head = Integer.parseInt(vertex[1]);
             String color = "";
-            color = edgecolorer.belongsTo(tail, head);
+            color = edgeColors.belongsTo(tail + " -> " + head);
             drawEdge(nodes[tail], nodes[head], color);
         }
     }
 
     /**
      * Draws labels on the nodes.
+     *
      */
+
     private void labelNodes() {
     	ArrayList<String[]> edges = ranker.getVertices();
     	for (int i = 0; i < G.E(); i++) {
@@ -315,8 +352,10 @@ public class GraphLayout {
 
     /**
      * Writes position of a node to
-     * a file
+     * an output file
+     *
      */
+
     private void writeToFile(int node, double x, double y) {
         output.println(node + " -> " + "("+x+","+y+")");
     }

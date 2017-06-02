@@ -1,12 +1,3 @@
-/**
- * InputParser does all the preprocessing on the
- * input, for later efficient use.
- *
- * @author  Unathi Koketso Skosana
- * @version 1.0
- * @since   2017-02-05
- */
-
 /* Default java imports */
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +6,15 @@ import java.util.HashMap;
 import algs4.Digraph;
 import algs4.DirectedCycle;
 import std.In;
+
+/**
+ * The class {@code InputParser} is represents a data type that does
+ * all the preprocessing on the input, for later efficient use.
+ * <p>
+ * @author  Unathi Koketso Skosana
+ * @version 1.0
+ * @since   2017-02-05
+ */
 
 public class InputParser {
     private Digraph G;
@@ -25,8 +25,10 @@ public class InputParser {
     /**
      * Initializes an inputStream instance and
      * creates a Digraph instance.
+     *
      * @param inputStream
      */
+
     public InputParser(In inputStream) {
         addEdges(inputStream);
         initialiseDigraph();
@@ -36,6 +38,7 @@ public class InputParser {
     /**
      * Initializes a Digraph instance.
      */
+
     private void initialiseDigraph() {
         G = new Digraph(nodeCount);
         for (int i = 0; i < vertices.size(); i++) {
@@ -51,8 +54,10 @@ public class InputParser {
      * Extracts Digraph edges from inputStream, by splitting each line
      * on either side of delimiter " -> " and gets the number of nodes
      * in the graph.
+     *
      * @param inputStream
      */
+
     private void addEdges(In inputStream) {
         int max = 0;
         String[] vertex;
@@ -75,9 +80,11 @@ public class InputParser {
     /**
      * Checks if an edge leads to a loop
      * if so, exits the program.
+     *
      * @param w tail of edge
      * @param v head of edge
      */
+
     private void isLoop(int v, int w) {
         if (v == w) {
             throw new InputException("Invalid input: "
@@ -89,7 +96,9 @@ public class InputParser {
     /**
      * Exits the Program, if a cycle is detected in
      * the cycle.
+     *
      */
+
     public void hasCycle() {
         DirectedCycle finder = new DirectedCycle(G);
         if (finder.hasCycle()) {
@@ -100,10 +109,11 @@ public class InputParser {
     }
 
     /**
-     * Getter method
+     * Returns the instantiated digraph
      *
-     * @return G Digraph instantiated
+     * @return instantiated digraph
      */
+
     public Digraph getDigraph() {
         return G;
     }
@@ -124,8 +134,9 @@ public class InputParser {
     }
 
     /**
-     * Getter method
-     * @return returns a mapping of edges mapped to their frequencies.
+     * Returns the edge frequency map.
+     *
+     * @return a mapping of edges mapped to their frequencies.
      */
     public HashMap<String, Integer> getEdgeFreqCount() {
         return edgeFreqCount;

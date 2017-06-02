@@ -6,3 +6,5 @@ src/output.txt
 
 # IntelliJ
 /out/
+
+/.idea/

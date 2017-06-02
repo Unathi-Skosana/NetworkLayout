@@ -14,7 +14,7 @@ public class Shell {
      * Rearranges the array in ascending order, using the natural order.
      * @param a the array to be sorted
      */
-    public static void sort(Comparable[] a, Integer[] imageList) {
+    public static void sort(Comparable[] a, Integer[] items) {
         int n = a.length;
 
         // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ...
@@ -25,7 +25,7 @@ public class Shell {
             // h-sort the array
             for (int i = h; i < n; i++) {
                 for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
-                    exch(a, j, j-h, imageList);
+                    exch(a, j, j-h, items);
                 }
             }
             assert isHsorted(a, h);
@@ -46,15 +46,15 @@ public class Shell {
     }
 
     // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j, Integer[] imageList) {
+    private static void exch(Object[] a, int i, int j, Integer[] items) {
         Object swap = a[i];
         a[i] = a[j];
         a[j] = swap;
 
         // Reflect changes on the other array.
-        Integer temp = imageList[i];
-        imageList[i] = imageList[j];
-        imageList[j] = temp;
+        Integer temp = items[i];
+        items[i] = items[j];
+        items[j] = temp;
     }
 
 

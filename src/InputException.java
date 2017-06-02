@@ -1,16 +1,17 @@
-/* InputException is a program that handles the errors that
- * might occur during the parsing of input into the input parser program.
- *
+import java.lang.RuntimeException;
+
+/* {@code InputException} class handles the errors that
+ * might occur during the parsing of input into the InputParser object.
+ * <p>
  * @author  Unathi Koketso Skosana
  * @version 1.0
  * @since   2017-27-02
  */
-import java.lang.RuntimeException;
 
 public class InputException extends RuntimeException {
-    /**
-     * Serialization Identifier
-     */
+
+    /* Serialization Identifier */
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -18,6 +19,7 @@ public class InputException extends RuntimeException {
      *
      * @param errorMessage An error message to shown to the user.
      */
+
     public InputException(String errorMessage) {
         super(errorMessage);
     }
@@ -27,6 +29,7 @@ public class InputException extends RuntimeException {
      * InputException instance with a default error
      * message
      */
+
     public InputException() {
         super("An unknown error occured.");
     }

@@ -1,10 +1,11 @@
 package algs4;
+
+import std.Out;
+
 /**
  * For formatting output from a toString() method
  * of digraph into a usable format.
  */
-
-import std.Out;
 
 public class Formatter {
     private String[] input;
@@ -15,6 +16,7 @@ public class Formatter {
      * a Digraph and does the formatting.
      *
      */
+
     public Formatter(Digraph G, String name) {
         this.input = G.toString().split("\n");
         this.output = new Out("../examples/generated_input/" + name + ".txt");
@@ -29,6 +31,7 @@ public class Formatter {
      * formatted output is written to a file.
      * 
      */
+
     private void format() {
         for (int i = 1; i < input.length; i++) {
             String[] nodes = input[i].split(": ");

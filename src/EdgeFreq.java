@@ -26,19 +26,20 @@ import java.util.Set;
 
 public class EdgeFreq {
     private HashMap<String, Integer> edgeFreqCount;
-    private HashMap<String, ArrayList<String>> dummyNodes;
+    private HashMap<String, ArrayList<String>> dummyEdges;
     private ArrayList<Integer> occurrenceSet;
 
     /**
      * Initialises a new instance of edgeFreq and does all the preprocessing.
      *
-     * @param edgeFreqCount
-     * @param dummyNodes
+     * @param edgeFreqCount map containing the edge frequencies
+     * @param dummyEdges dummy edges associated with edges in
+     *                   edgeFreqCount
      */
     public EdgeFreq(HashMap<String, Integer> edgeFreqCount, HashMap<String,
-            ArrayList<String>> dummyNodes) {
+            ArrayList<String>> dummyEdges) {
         this.edgeFreqCount = edgeFreqCount;
-        this.dummyNodes = dummyNodes;
+        this.dummyEdges = dummyEdges;
         this.occurrenceSet = new ArrayList<Integer>();
         spreadFrequencies();
         pollOccurrences();
@@ -73,9 +74,9 @@ public class EdgeFreq {
     private void spreadFrequencies() {
         String[] keys = edgeFreqCount.keySet().toArray(new String[0]);
         for (String key : keys) {
-            if (dummyNodes.containsKey(key)) {
+            if (dummyEdges.containsKey(key)) {
                 ArrayList<String> splineEdges =
-                        dummyNodes.get(key);
+                        dummyEdges.get(key);
                 for (String splineEdge : splineEdges) {
                     edgeFreqCount.put(splineEdge,
                             edgeFreqCount.get(key));

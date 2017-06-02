@@ -3,9 +3,12 @@ import java.awt.Color;
 /**
  * A class to enforce clean code without magic
  * numbers
- * @author 19790457
- *
+ * <p>
+ * @author Unathi Koketso Skosana
+ * @version 1.0
+ * @since 2017-02-05
  */
+
 public class GraphConfig {
     public static Color RED                  = new Color(255, 0, 0);
     public static Color YELLOW               = new Color(255, 199, 0);
