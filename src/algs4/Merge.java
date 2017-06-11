@@ -1,6 +1,5 @@
 package algs4;
 
-
 /**
  *  The {@code Merge} class provides static methods for sorting an
  *  array using mergesort.

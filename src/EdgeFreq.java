@@ -143,9 +143,8 @@ public class EdgeFreq {
                     return "orange";
                 } else if (index == yellowGroup) {
                     return "yellow";
-                } else {
-                    return "black";
                 }
+                return "black";
         }
     }
 }
