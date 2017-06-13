@@ -15,8 +15,8 @@ public class GraphConfig {
     public static Color ORANGE               = new Color(255, 144, 0);
     public static Color BLACK                = new Color(0, 0, 0);
     public static Color WHITE                = new Color(255, 255, 255);
-    public static Color GREY          = new Color(109,111,114);
+    public static Color GREY                 = new Color(109,111,114);
     public static double DEFAULT_PEN_SIZE    = 0.005;
     public static double EDGE_PEN_SIZE       = 0.010;
-    public static double NODE_RADIUS = 0.45;
+    public static double NODE_RADIUS         = 0.45;
 }

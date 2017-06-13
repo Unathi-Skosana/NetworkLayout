@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0af1ae4a-d486-4b0e-b187-5bafbf7a8a00" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EdgeFreq.java" afterPath="$PROJECT_DIR$/src/EdgeFreq.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algs4/Merge.java" afterPath="$PROJECT_DIR$/src/algs4/Merge.java" />
-    </list>
+    <list default="true" id="0af1ae4a-d486-4b0e-b187-5bafbf7a8a00" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
