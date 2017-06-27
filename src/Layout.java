@@ -49,8 +49,8 @@ public class Layout {
      */
 
     private ArrayList<Integer> fixOrder(
-            ArrayList<Integer> currentRank
-            , ArrayList<Integer> nextRank) {
+            ArrayList<Integer> currentRank,
+            ArrayList<Integer> nextRank) {
         ArrayList<Double> averages = new ArrayList<Double>();
         for (int j = 0; j < nextRank.size(); j++) {
             int v = nextRank.get(j);
@@ -74,8 +74,8 @@ public class Layout {
      */
 
     private ArrayList<Integer> comparatorSort(
-            ArrayList<Double> indices
-            , ArrayList<Integer> list) {
+            ArrayList<Double> indices,
+            ArrayList<Integer> list) {
         Double[] indicesArray =
             indices.toArray(new Double[indices.size()]);
         
@@ -137,8 +137,10 @@ public class Layout {
                 || ranks.get(key+1).size() == 1) {
                 continue;
             }
-            ArrayList<Integer> fixed = fixOrder(ranks.get(key),
-                    ranks.get(key+1));
+            ArrayList<Integer> fixed = fixOrder(
+                    ranks.get(key),
+                    ranks.get(key+1)
+            );
             ranks.put(key+1, fixed);
        }
     }

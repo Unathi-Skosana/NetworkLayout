@@ -95,8 +95,8 @@ public class GraphLayout {
         this.edgeFreqCount = input.getEdgeFreqCount();
         this.nodes         = new EuclideanPoint[G.V()];
         this.layout        = new Layout(ranker);
-        this.edgeColors   = new EdgeFreq(edgeFreqCount,
-            ranker.getDummyEdges());
+        this.edgeColors    = new EdgeFreq(edgeFreqCount,
+                                         ranker.getDummyEdges());
     }
 
    /**
@@ -229,8 +229,10 @@ public class GraphLayout {
             double centerX = scale/(vertexSet.size() + 1);
             for (int v = 0; v < vertexSet.size(); v++) {
                 nodes[vertexSet.get(v)] =
-                        new EuclideanPoint((v+1)*centerX,
-                                key*centerY);
+                        new EuclideanPoint(
+                                (v+1)*centerX,
+                                key*centerY
+                        );
                 writeToFile(vertexSet.get(v),
                         nodes[vertexSet.get(v)].getXCoordinate(),
                         nodes[vertexSet.get(v)].getYCoordinate());
@@ -245,8 +247,11 @@ public class GraphLayout {
 
     private void drawNodes() {
         for (int i = 0; i < vertices; i++) {
-            drawNode(nodes[i].getXCoordinate(),
-                    nodes[i].getYCoordinate(), radius);
+            drawNode(
+                    nodes[i].getXCoordinate(),
+                    nodes[i].getYCoordinate(),
+                    radius
+            );
         }
     }
 
@@ -258,14 +263,23 @@ public class GraphLayout {
      * @param scaleRadius radius
      */
 
-    private void drawNode(double x,
-            double y, double scaleRadius) {
+    private void drawNode(
+            double x,
+            double y,
+            double scaleRadius) {
         if (vertices >= 100) {
-            StdDraw.filledEllipse(x, y,
-                scaleRadius, scaleRadius*4);
+            StdDraw.filledEllipse(
+                    x,
+                    y,
+                    scaleRadius,
+                    scaleRadius*4
+            );
         }   else {
-            StdDraw.filledCircle(x, y,
-                scaleRadius);
+            StdDraw.filledCircle(
+                    x,
+                    y,
+                    scaleRadius
+            );
         }
     }
 
@@ -277,13 +291,17 @@ public class GraphLayout {
      * @param color color of edge.
      */
 
-    private void drawEdge(EuclideanPoint p1,
-                EuclideanPoint p2, String color) {
+    private void drawEdge(
+            EuclideanPoint p1,
+            EuclideanPoint p2,
+            String color) {
         setPenColor(color);
-        StdDraw.line(p1.getXCoordinate(),
+        StdDraw.line(
+                p1.getXCoordinate(),
                 p1.getYCoordinate(),
                 p2.getXCoordinate(),
-                p2.getYCoordinate());
+                p2.getYCoordinate()
+        );
         setPenColor("");
     }
 
@@ -340,12 +358,18 @@ public class GraphLayout {
             int tail = Integer.parseInt(vertex[0]);
             int head = Integer.parseInt(vertex[1]);
             if (tail < vertices) {
-                labelNode(nodes[tail].getXCoordinate(),
-                    nodes[tail].getYCoordinate(), "" + tail);
+                labelNode(
+                        nodes[tail].getXCoordinate(),
+                        nodes[tail].getYCoordinate(),
+                        "" + tail
+                );
             }
             if (head < vertices) {
-                labelNode(nodes[head].getXCoordinate(),
-                    nodes[head].getYCoordinate(), "" + head);
+                labelNode(
+                        nodes[head].getXCoordinate(),
+                        nodes[head].getYCoordinate(),
+                        "" + head
+                );
             }
         }
     }

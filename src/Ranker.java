@@ -287,22 +287,22 @@ public class Ranker {
      * that stretches over two or more ranks.
      *
      * @param set nodes in rank s.
-     * @param s   source rank
+     * @param source   source rank
      */
 
-    private void search(ArrayList<Integer> set , int s) {
+    private void search(ArrayList<Integer> set , int source) {
         int size = set.size();
         for (int i = 0; i < size; i++) {
             int v = set.get(i);
             for (int w: G.adj(v)) {
                 Set<Integer> keys = rankSets.keySet();
-                for (int e: keys) {
-                    if (e != s)
-                        if (rankSets.get(e).contains(w)
-                                &&  Math.abs(e - s) > 1) {
-                            rankSets.get(e + 1).add(nodeCount);
+                for (int dest: keys) {
+                    if (dest != source)
+                        if (rankSets.get(dest).contains(w)
+                                &&  Math.abs(dest - source) > 1) {
+                            rankSets.get(dest + 1).add(nodeCount);
                             nodeCount++;
-                            percolateDummyNode(s, e + 1);
+                            percolateDummyNode(source, dest + 1);
                         }
                 }
             }
@@ -337,7 +337,7 @@ public class Ranker {
      */
 
     private void populateNewDigraph(
-            ArrayList<Integer> set, int s) {
+            ArrayList<Integer> set, int source) {
         int size = set.size();
         for (int i = 0; i < size; i++) {
             int v = set.get(i);
@@ -346,11 +346,11 @@ public class Ranker {
                 Set<Integer> keys = rankSets.keySet();
                 ArrayList<Integer> outcasts =
                         new ArrayList<Integer>();
-                for (int e: keys) {
-                    if (e != s)
-                        if (rankSets.get(e).contains(w)
-                                && Math.abs(e - s) > 1) {
-                            connectNodes(v, w, e + 1, s);
+                for (int dest: keys) {
+                    if (dest != source)
+                        if (rankSets.get(dest).contains(w)
+                                && Math.abs(dest - source) > 1) {
+                            connectNodes(v, w, dest + 1, source);
                             newNodeCount++;
                             outcasts.add(w);
                         }
@@ -370,29 +370,44 @@ public class Ranker {
      * @param to destination rank number
      */
 
-    private void connectNodes(int startNode
-            ,int endNode
-            ,int from
-            ,int to) {
+    private void connectNodes(
+            int startNode,
+            int endNode,
+            int from,
+            int to) {
 
         ArrayList<String> virtualNodes = new ArrayList<String>();
         newG.addEdge(newNodeCount, endNode);
-        virtualNodes.add(constructEdge(newNodeCount
-                , endNode));
+        virtualNodes.add(
+                constructEdge(
+                        newNodeCount,
+                        endNode
+                )
+        );
         for (int i = from + 1; i < to; i++) {
-            newG.addEdge(newNodeCount + 1
-                    , newNodeCount);
+            newG.addEdge(
+                    newNodeCount + 1,
+                    newNodeCount
+            );
             virtualNodes.add(
-                    constructEdge(newNodeCount + 1
-                            , newNodeCount));
+                    constructEdge(
+                            newNodeCount + 1,
+                            newNodeCount
+                    )
+            );
             newNodeCount++;
         }
         newG.addEdge(startNode, newNodeCount);
-        virtualNodes.add(constructEdge(startNode
-                , newNodeCount));
+        virtualNodes.add(
+                constructEdge(
+                        startNode,
+                        newNodeCount
+                )
+        );
         dummyEdges.put(
-                constructEdge(startNode, endNode)
-                , virtualNodes);
+                constructEdge(startNode, endNode),
+                virtualNodes
+        );
     }
 
     /**
